@@ -2,7 +2,10 @@ package com.andrewdev.coursemanagementsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
+@Table(name = "instructor_detail")
 public class InstructorDetail {
 
     @Id
