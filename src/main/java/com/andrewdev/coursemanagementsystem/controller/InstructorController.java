@@ -3,13 +3,14 @@ package com.andrewdev.coursemanagementsystem.controller;
 import com.andrewdev.coursemanagementsystem.entity.Instructor;
 import com.andrewdev.coursemanagementsystem.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/instructors")
 public class InstructorController {
 
@@ -21,8 +22,9 @@ public class InstructorController {
     }
 
     @GetMapping("/list")
-    public List<Instructor> getInstructorList(){
+    public String getInstructorList(Model model){
         List<Instructor> instructorList = this.instructorService.findAll();
-        return instructorList;
+        model.addAttribute("instructorList",instructorList);
+        return "instructor-list";
     }
 }
