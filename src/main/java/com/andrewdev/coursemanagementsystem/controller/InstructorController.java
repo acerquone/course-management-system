@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,5 +27,12 @@ public class InstructorController {
         List<Instructor> instructorList = this.instructorService.findAll();
         model.addAttribute("instructorList",instructorList);
         return "instructor-list";
+    }
+
+    @GetMapping("/showCourses")
+    public String getCoursesByInstructor(@RequestParam("instructorId") Integer instructorId, Model model){
+        Instructor instructor = this.instructorService.findById(instructorId);
+        model.addAttribute("instructor",instructor);
+        return "course-list";
     }
 }
