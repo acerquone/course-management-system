@@ -2,6 +2,8 @@ package com.andrewdev.coursemanagementsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -13,6 +15,10 @@ public class Course {
 
     @Column(name = "title")
     private String title;
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "course_student",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private List<Student> studentList;
 
     public Course() {
     }
@@ -35,5 +41,13 @@ public class Course {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 }

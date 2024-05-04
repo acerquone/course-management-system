@@ -18,12 +18,18 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Students</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="course : ${instructor.courseList}">
             <td th:text="${course.id}"></td>
             <td th:text="${course.title}"></td>
+            <td>
+                <a th:href="@{/courses/showStudents(courseId = ${course.id})}" class="btn btn-info btn-sm">
+                    Students
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
