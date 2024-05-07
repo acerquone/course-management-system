@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <div class="container">
+
+        <h3>Instructor Form</h3>
+        <hr>
+        <form action="#" th:action="@{save}" method="POST">
+            <input type="text" th:field="${instructor.firstName}" placeholder="First Name" class="form-control mb-4 w-25">
+            <input type="text" th:field="${instructor.lastName}" placeholder="Last Name" class="form-control mb-4 w-25">
+            <input type="text" th:field="${instructor.email}" placeholder="Email" class="form-control mb-4 w-25">
+            <input type="text" th:field="${instructor.instructorDetail.hobby}" placeholder="Hobby" class="form-control mb-4 w-25">
+            <input type="text" th:field="${instructor.instructorDetail.youtubeChannel}" placeholder="Youtube Channel" class="form-control mb-4 w-25">
+            <button type="submit" class="btn btn-success col-2">Save</button>
+        </form>
+    </div>
+
+</body>
+</html>

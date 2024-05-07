@@ -12,7 +12,10 @@
 <div class="container">
     <h3>Course list</h3>
     <hr>
-
+    <a th:href="@{/courses/addForm(instructorId = ${instructor.id})}" class="btn btn-success btn-sml">
+        Add new course
+    </a>
+    <hr>
     <table class="table table-bordered table-stripped">
         <thead class="table-dark">
         <tr>

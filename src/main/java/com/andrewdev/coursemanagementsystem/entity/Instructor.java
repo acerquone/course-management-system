@@ -2,6 +2,7 @@ package com.andrewdev.coursemanagementsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,8 +27,7 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
+    @OneToMany(mappedBy = "instructor",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Course> courseList;
 
     public Instructor() {
@@ -85,6 +85,13 @@ public class Instructor {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    public void addCourse(Course course){
+        if(this.courseList == null){
+            courseList = new ArrayList<>();
+        }
+        courseList.add(course);
     }
 
     @Override

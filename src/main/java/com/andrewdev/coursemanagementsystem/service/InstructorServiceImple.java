@@ -1,6 +1,7 @@
 package com.andrewdev.coursemanagementsystem.service;
 
 import com.andrewdev.coursemanagementsystem.dao.InstructorRepository;
+import com.andrewdev.coursemanagementsystem.entity.Course;
 import com.andrewdev.coursemanagementsystem.entity.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,11 @@ public class InstructorServiceImple implements InstructorService{
 
         return instructor;
     }
+
+    @Override
+    public void save(Instructor instructor){
+        this.instructorRepository.save(instructor);
+    }
+
 
 }
