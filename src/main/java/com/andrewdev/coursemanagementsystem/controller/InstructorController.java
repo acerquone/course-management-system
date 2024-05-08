@@ -46,4 +46,19 @@ public class InstructorController {
         this.instructorService.save(instructor);
         return "redirect:/instructors/list";
     }
+
+    @GetMapping("/showUpdateInstructorForm")
+    public String updateInstructorForm(@RequestParam("instructorId") Integer id, Model model){
+        Instructor instructor = this.instructorService.findById(id);
+        model.addAttribute("instructor", instructor);
+        return "instructor-form";
+    }
+
+    @GetMapping("/deleteInstructor")
+    public String deleteInstructor(@RequestParam("instructorId") Integer id){
+        Instructor instructor = this.instructorService.findById(id);
+        this.instructorService.remove(instructor);
+
+        return "redirect:/instructors/list";
+    }
 }

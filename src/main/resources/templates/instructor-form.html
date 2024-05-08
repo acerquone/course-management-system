@@ -12,12 +12,13 @@
 
         <h3>Instructor Form</h3>
         <hr>
-        <form action="#" th:action="@{save}" method="POST">
-            <input type="text" th:field="${instructor.firstName}" placeholder="First Name" class="form-control mb-4 w-25">
-            <input type="text" th:field="${instructor.lastName}" placeholder="Last Name" class="form-control mb-4 w-25">
-            <input type="text" th:field="${instructor.email}" placeholder="Email" class="form-control mb-4 w-25">
-            <input type="text" th:field="${instructor.instructorDetail.hobby}" placeholder="Hobby" class="form-control mb-4 w-25">
-            <input type="text" th:field="${instructor.instructorDetail.youtubeChannel}" placeholder="Youtube Channel" class="form-control mb-4 w-25">
+        <form action="#" th:action="@{save}" th:object="${instructor}" method="POST">
+            <input type="hidden" th:field="*{id}">
+            <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control mb-4 w-25">
+            <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 w-25">
+            <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 w-25">
+            <input type="text" th:field="*{instructorDetail.hobby}" placeholder="Hobby" class="form-control mb-4 w-25">
+            <input type="text" th:field="*{instructorDetail.youtubeChannel}" placeholder="Youtube Channel" class="form-control mb-4 w-25">
             <button type="submit" class="btn btn-success col-2">Save</button>
         </form>
     </div>

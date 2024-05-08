@@ -14,4 +14,5 @@ public interface InstructorService {
 
     void save(Instructor instructor);
 
+    void remove(Instructor instructor);
 }

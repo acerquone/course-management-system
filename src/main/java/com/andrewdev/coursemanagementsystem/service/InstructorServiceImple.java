@@ -43,5 +43,10 @@ public class InstructorServiceImple implements InstructorService{
         this.instructorRepository.save(instructor);
     }
 
+    @Override
+    public void remove(Instructor instructor) {
+        this.instructorRepository.delete(instructor);
+    }
+
 
 }
