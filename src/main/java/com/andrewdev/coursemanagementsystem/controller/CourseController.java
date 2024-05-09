@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CourseController {
 
     private CourseService courseService;
+
     private InstructorService instructorService;
 
     @Autowired
@@ -42,6 +43,22 @@ public class CourseController {
         course.setInstructor(this.instructorService.findById(instructorId));
         this.courseService.save(course);
         redirectAttributes.addAttribute("instructorId",instructorId);
+        return "redirect:/instructors/showCourses";
+    }
+
+    @GetMapping("/showUpdateCourseForm")
+    public String updateCourseForm(@RequestParam("courseId") Integer courseId, @RequestParam("instructorId") Integer instructorID, Model model){
+        Course course = this.courseService.findById(courseId);
+        model.addAttribute("course",course);
+        model.addAttribute("instructorId",instructorID);
+        return "course-form";
+    }
+
+    @GetMapping("/deleteCourse")
+    public String deleteCourse(@RequestParam("courseId") Integer courseId, @RequestParam("instructorId") Integer instructorId, RedirectAttributes redirectAttributes){
+        Course course = this.courseService.findById(courseId);
+        redirectAttributes.addAttribute("instructorId",instructorId);
+        this.courseService.remove(course);
 
         return "redirect:/instructors/showCourses";
     }

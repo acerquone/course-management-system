@@ -12,12 +12,12 @@
 
     <h3>Instructor Form</h3>
     <hr>
-    <form action="#" th:action="@{save}" method="POST">
-        <input type="text" th:field="${course.title}" placeholder="Title" class="form-control mb-4 w-25">
+    <form action="#" th:action="@{save}" th:object="${course}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <input type="text" th:field="*{title}" placeholder="Title" class="form-control mb-4 w-25">
         <input type="hidden" th:name="instructorId" th:value="${instructorId}">
         <button type="submit" class="btn btn-success col-2">Save</button>
     </form>
-
 </div>
 </body>
 </html>

@@ -7,4 +7,6 @@ public interface CourseService {
     Course findById(Integer id);
 
     void save(Course course);
+
+    void remove(Course course);
 }

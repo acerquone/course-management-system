@@ -34,4 +34,9 @@ public class CourseServiceImple implements CourseService{
     public void save(Course course) {
         this.courseRepository.save(course);
     }
+
+    @Override
+    public void remove(Course course) {
+        this.courseRepository.delete(course);
+    }
 }
